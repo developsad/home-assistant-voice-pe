@@ -1772,8 +1772,8 @@ voice_assistant:
         not:
             lambda: |-
               return id(external_media_player)->state == media_player::MediaPlayerState::MEDIA_PLAYER_STATE_ANNOUNCING;
-        - lambda: id(voice_assistant_phase) = ${voice_assist_idle_phase_id};
-        - script.execute: control_leds
+    - lambda: id(voice_assistant_phase) = ${voice_assist_idle_phase_id};
+    - script.execute: control_leds
 
   # When the voice assistant ends ...
   on_end:
