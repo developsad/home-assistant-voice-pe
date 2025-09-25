@@ -1766,14 +1766,14 @@ voice_assistant:
           # Start a script that would potentially enable the stop word if the response is longer than a second
           - script.execute: activate_stop_word_once
 	- wait_until:
-		lambda: |-
-			return id(external_media_player)->state == media_player::MediaPlayerState::MEDIA_PLAYER_STATE_ANNOUNCING;
+	    lambda: |-
+            return id(external_media_player)->state == media_player::MediaPlayerState::MEDIA_PLAYER_STATE_ANNOUNCING;
 	- wait_until:
-		not:
-		lambda: |-
-			return id(external_media_player)->state == media_player::MediaPlayerState::MEDIA_PLAYER_STATE_ANNOUNCING;
-		- lambda: id(voice_assistant_phase) = ${voice_assist_idle_phase_id};
-		- script.execute: control_leds
+        not:
+            lambda: |-
+              return id(external_media_player)->state == media_player::MediaPlayerState::MEDIA_PLAYER_STATE_ANNOUNCING;
+        - lambda: id(voice_assistant_phase) = ${voice_assist_idle_phase_id};
+        - script.execute: control_leds
 
   # When the voice assistant ends ...
   on_end:
